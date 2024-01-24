@@ -1,0 +1,630 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 65.5%;
+}
+
+body {
+  background: #151419;
+  color: #fbfbfb;
+  font-family: 'Poppins', sans-serif;
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+}
+
+.sideBar {
+  width: 25%; /* Assign a width percentage to the sidebar */
+  min-width: 250px; /* You can set a minimum width for the sidebar if needed */
+  /* ... other styles ... */
+}
+
+
+.main {
+  flex: 9;
+  width: 75%; /* This should be the rest of the width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; /* Aligns the children to the bottom */
+  height: calc(100vh - 4rem); /* Full height minus the height of the chatFooter */
+  margin: 0; /* Adjust the margin as needed */
+  padding-bottom: 4rem; /* Space for chatFooter */
+}
+
+.logo {
+  margin-right: 1rem;
+}
+
+.brand {
+  font-size: 2rem;
+}
+
+/* .upperSide {
+  padding: 2.5rem;
+
+  height: 70%;
+} */
+
+.upperSideTop {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.fileDirectory {
+  color: #fbfbfb;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  padding-top: 20px; 
+  flex-direction: column;
+  overflow-y: auto; 
+  max-height: calc(100vh - 250px); 
+}
+
+.fileDirectory h3 {
+  text-align: center;
+  padding: 10px;
+  text-decoration: solid;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+
+
+.upperSideTop img{
+  width: 80px;
+  height: 80px;
+}
+
+.addBtn {
+  height: 2rem;
+  padding-right: 1rem;
+}
+
+.midBtn {
+  background: #878787;
+  border: none;
+  color: #fbfbfb;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  width: 25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+}
+
+.query {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  color: #fbfbfb;
+  padding: 1.5rem;
+  width: 25rem;
+  margin: 1rem auto;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(98, 98, 98, 1);
+}
+
+.query > img {
+  margin-right: 2rem;
+  object-fit: cover;
+  height: 1.7rem;
+}
+
+.lowerSide {
+  padding: 2rem;
+}
+
+.listItems {
+  margin: 0.75rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.listItemsImg {
+  margin: 1rem;
+  padding-right: 1rem;
+}
+
+.listItems:nth-child(1) > .listItems {
+  margin-right: 1rem;
+}
+
+.listItems:nth-child(3) > .listItems {
+  margin-right: 0.75rem;
+}
+
+.ReactModal__Overlay {
+  opacity: 1 !important;
+}
+
+.ReactModal__Content {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.chats {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  width: 100%;
+  flex-direction: row; 
+  flex-grow: 1; /* Allows this container to fill up the space */
+  align-items: center;
+  padding: 0.5rem;
+  margin: 1rem 1rem 1rem auto;
+  
+}
+
+
+/* .chat {
+  margin: 1rem;
+  padding: 2rem 3rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: flex-start;
+  text-align: justify;
+  word-break: break-word;  Add this line */
+
+
+role-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.message-info{
+  display:flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.image-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.role-label{
+  font-size: 12px;
+  text-align: center
+}
+
+/* User role label styling */
+.user-role {
+  color: #F56E0F; /* User color */
+}
+
+/* Assistant role label styling */
+.assistant-role {
+  color: #6C757D; /* Assistant color */
+}
+
+
+
+/* User message styling */
+
+
+
+
+.chat {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  flex-direction: row;
+  padding: 0.5rem;
+  border-radius: 5px;
+
+}
+
+.chat img,
+.user img {
+  object-fit: cover;
+  border-radius: 0.5rem;
+  width: 40px;
+  height: 40px;
+  margin-right: 2rem;
+}
+
+.bot {
+  background: #262626;
+  width: fit-content;
+  border-radius: 0.5rem;
+}
+
+.chatFooter {
+  position: fixed; /* Lock the position */
+  bottom: 0; /* Stick to the bottom of the screen */
+  left: 25%; /* This should match the sidebar's width */
+  width: 75%;
+  display: flex;
+  justify-content: space-between; /* Adjust this as needed */
+  align-items: center;
+  background: #1b1b1e; /* Match the color with your design */
+  padding: 1rem; /* Padding for aesthetics */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow for better separation */
+  z-index: 99; /* Ensure it's above other elements */
+}
+
+.inp {
+  padding: 0.5rem;
+  background: #1b1b1e;
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  width: 68rem;
+}
+
+.inp > input {
+  width: calc(100% - 3rem);
+  outline: none;
+  padding: 1.25rem;
+  color: #fbfbfb;
+}
+
+.inp > input,
+.send {
+  background: transparent;
+  border: none;
+}
+
+.chatFooter > p {
+  margin: 2rem 0;
+}
+
+
+@media (max-width: 768px) {
+  .App {
+    flex-direction: row;
+  }
+  #root {
+    width: 100%;
+    height: 100%;
+  }
+
+  .sideBar {
+    flex: 1;
+    border-right: none;
+  }
+
+  .main {
+    flex: 1;
+    margin: 2rem;
+  }
+
+  .upperSide {
+    padding: 1.5rem;
+  }
+
+  .upperSideTop {
+    margin-bottom: 1.5rem;
+  }
+
+  .midBtn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .query,
+  .listItems {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .chats {
+    max-width: 100%;
+    height: 50vh;
+  }
+
+  .chat {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  .chat img,
+  .user img {
+    width: 30px;
+    height: 30px;
+    margin-right: 1rem;
+  }
+
+  .inp {
+    width: 100%;
+  }
+}
+
+.dialogBox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.dialogContent {
+  background: #333; /* Dark background color */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Box shadow for a subtle lift */
+  color: white; /* Text color */
+}
+
+.dialogContent h3 {
+  margin-bottom: 15px;
+}
+
+.dialogContent input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  background: #444; /* Input background color */
+  color: white; /* Input text color */
+}
+
+.dialogContent button {
+  padding: 10px 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dialogContent button:hover {
+  background: #555; /* Hover background color */
+}
+
+.dialogContent button:active {
+  background: #666; /* Active background color */
+}
+
+
+/* App.css */
+/* ... other styles ... */
+
+.darkPopupContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #151419;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoImage {
+  width: 120px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 20px;
+}
+
+.darkPopup {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  background: #151419;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.popupContent {
+  text-align: center;
+}
+
+.popupContent h3 {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.popupContent input {
+  width: calc(100% - 20px);
+  padding: 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  background-color: #282c34;
+  color: #fff;
+  outline: none;
+}
+
+.popupContent input::placeholder {
+  color: #aaa;
+}
+
+.popupContent button {
+  background-color: #262626;
+  color: #fff;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 10px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+/* i input here */
+.popupContent button:last-child {
+  background-color: #262626;
+  margin-right: 0; 
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.popupContent button:hover {
+  background-color: #294B29;
+}
+
+.popupContent button:last-child {
+  background-color: #262626;
+}
+
+.popupContent button:last-child:hover {
+  background-color: #D24545;
+}
+
+/* ... other styles ... */
+
+/* Common styles for all screen sizes */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 65.5%;
+}
+
+body {
+  background: #151419;
+  color: #fbfbfb;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ... Other styles ... */
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .App {
+    flex-direction: column;
+  }
+
+  .sideBar {
+    flex: 1;
+    border-right: none;
+  }
+
+  .main {
+    flex: 1;
+    margin: 2rem;
+  }
+
+  .upperSide {
+    padding: 1.5rem;
+  }
+
+  .midBtn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .query,
+  .listItems {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .chats {
+    max-width: 100%;
+    height: 50vh;
+  }
+
+  .chat {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    margin: 0.5rem;
+  }
+
+  .chat img,
+  .user img {
+    width: 30px;
+    height: 30px;
+    margin-right: 1rem;
+  }
+
+  .inp {
+    width: 100%;
+  }
+}
+
+
+/* Add styles for chat messages */
+.chat {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+/* Styles for messages from the bot */
+
+
+/* Styles for messages from the user */
+.user-message {
+  background-color: #F56E0F; /* Slightly darker gray background */
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  word-wrap: break-word;
+  align-self: flex-end; /* Right-align user messages */
+  margin-left: auto; /* Pushes the message to the right */
+  width: fit-content; /* Adjust width to fit content */
+  max-width: 100%; /* Maximum width */
+}
+.bot-message {
+  white-space: pre-wrap;
+}
+
+/* Styles for message text */
+.message-text {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  max-width: 100%;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+/* Styles for the bot icon */
+.bot-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+/* Styles for the user icon */
+.user-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.1rem; /* Maintain consistent spacing from the right edge */
+}
